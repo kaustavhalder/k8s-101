@@ -1,5 +1,14 @@
 FROM node:alpine
 
-ADD app.js ./app.js
+WORKDIR /usr/src/app
 
-ENTRYPOINT ["node" , "app.js"]
+COPY package.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD npm start
+# CMD ["npm","app.js"]
